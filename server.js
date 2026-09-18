@@ -3,6 +3,8 @@ import express from 'express';
 const app = express();
 
 const PORT = 3000;
+app.set('view engine', 'ejs');
+
 
 app.get('/about', (req, res) => {
   res.send('About page');
@@ -37,6 +39,16 @@ app.get('/projects', (req, res) => {
   } else {
     res.send(filteredProjects);
   }
+});
+//krupp@umass.edu
+//mainle@umass.edu
+const events = [
+  { title: 'Career fair' },
+  { title: 'Hackathon kickoff' },
+];
+
+app.get('/events', (req, res) => {
+  res.render('events', { events });
 });
 
 app.listen(PORT, () => {
